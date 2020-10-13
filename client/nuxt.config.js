@@ -24,7 +24,15 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "stylesheet", type: "text/css", href: "https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" }
+    ],
+    script: [
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js' },
+      { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
+      { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js' }
+    ]
   },
   /*
    ** Global CSS
@@ -34,7 +42,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [],
+  plugins: ['~/plugins/sweetalert'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -51,8 +59,12 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://nuxtjs.org/api/configuration-modules/
+    '@nuxtjs/axios'
   ],
+
+  axios: {
+    baseURL: 'http://localhost:9000'
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
